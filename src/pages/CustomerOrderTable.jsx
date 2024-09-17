@@ -1,6 +1,6 @@
 import React from "react";
 
-const CustomerOrderTable = ({ orders }) => {
+const CustomerOrderTable = ({ orders, onDeleteOrder }) => {
   return (
     <div className="mt-6">
       <h2 className="text-2xl font-semibold mb-4">Customer Orders</h2>
@@ -14,6 +14,7 @@ const CustomerOrderTable = ({ orders }) => {
               <th className="py-2 px-4 border-b">Rice Name</th>
               <th className="py-2 px-4 border-b">Quantity (KG)</th>
               <th className="py-2 px-4 border-b">Total Price (PKR)</th>
+              <th className="py-2 px-4 border-b">Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -25,6 +26,14 @@ const CustomerOrderTable = ({ orders }) => {
                 <td className="py-2 px-4 border-b text-center">{order.name}</td>
                 <td className="py-2 px-4 border-b text-center">{order.kgs} kg</td>
                 <td className="py-2 px-4 border-b text-center">{order.totalPrice}</td>
+                <td className="py-2 px-4 border-b text-center">
+                  <button
+                    onClick={() => onDeleteOrder(index)}
+                    className="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600 transition duration-200"
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

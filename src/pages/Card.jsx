@@ -105,6 +105,11 @@ const Card = () => {
     }
   };
 
+  const handleDeleteOrder = (index) => {
+    const updatedOrders = orders.filter((_, i) => i !== index);
+    setOrders(updatedOrders);
+  };
+
   return (
     <>
       <Header />
@@ -132,7 +137,6 @@ const Card = () => {
           </div>
 
           <div className="p-3">
-            {/* Customer Information */}
             <div className="mb-6">
               <input
                 type="text"
@@ -150,7 +154,6 @@ const Card = () => {
               />
             </div>
 
-            {/* Product Selection */}
             <div className="shadow bg-white rounded-md p-4">
               {selectedRice.length > 0 ? (
                 selectedRice.map((data, index) => (
@@ -188,7 +191,6 @@ const Card = () => {
                 <p className="text-center text-gray-500">No items selected</p>
               )}
 
-              {/* Confirm Button */}
               <div className="text-right mt-6">
                 <button
                   onClick={handleConfirm}
@@ -201,7 +203,7 @@ const Card = () => {
           </div>
         </div>
 
-        <CustomerOrderTable orders={orders} />
+        <CustomerOrderTable orders={orders} onDeleteOrder={handleDeleteOrder} />
       </div>
     </>
   );
